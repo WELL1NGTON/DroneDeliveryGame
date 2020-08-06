@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://interface/wind/wind_arrow_pointer.png" type="Texture" id=1]
+[ext_resource path="res://interface/wind/WindDirection.gd" type="Script" id=2]
+[ext_resource path="res://interface/theme/default_theme.tres" type="Theme" id=3]
+
+[node name="WindDirection" type="CenterContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 128.0
+margin_bottom = 128.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Arrow" type="TextureRect" parent="."]
+margin_right = 128.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 64, 64 )
+texture = ExtResource( 1 )
+flip_h = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 60.0
+margin_right = 119.0
+margin_bottom = 68.0
+theme = ExtResource( 3 )
+text = "WIND POINTER"

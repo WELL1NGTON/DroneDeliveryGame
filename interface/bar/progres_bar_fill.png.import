@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/analog_stick_external_area.png-4c79704ec323f03579f140adde436212.stex"
+path="res://.import/progres_bar_fill.png-5449902cf0fd892185fc933fc7e9d810.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/analog_stick_external_area.png"
-dest_files=[ "res://.import/analog_stick_external_area.png-4c79704ec323f03579f140adde436212.stex" ]
+source_file="res://interface/bar/progres_bar_fill.png"
+dest_files=[ "res://.import/progres_bar_fill.png-5449902cf0fd892185fc933fc7e9d810.stex" ]
 
 [params]
 

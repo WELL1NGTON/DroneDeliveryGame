@@ -13,5 +13,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position += get_node("../Analog").stick_vector * get_node("../Analog").stick_speed * 5 * delta
+	position += get_node("./Camera2D/Interface/Analog").stick_vector * get_node("./Camera2D/Interface/Analog").stick_speed * 5 * delta + get_node("./Camera2D/Interface/WindDirection").wind_direction
+	
 	
