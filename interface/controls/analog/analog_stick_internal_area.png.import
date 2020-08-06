@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/analog_stick_internal_area.png-21cbf590e4d45ad8da0292312bd897e3.stex"
+path="res://.import/analog_stick_internal_area.png-4ae3609cfb4a349b32f6a1aa253a6c01.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/analog_stick_internal_area.png"
-dest_files=[ "res://.import/analog_stick_internal_area.png-21cbf590e4d45ad8da0292312bd897e3.stex" ]
+source_file="res://interface/controls/analog/analog_stick_internal_area.png"
+dest_files=[ "res://.import/analog_stick_internal_area.png-4ae3609cfb4a349b32f6a1aa253a6c01.stex" ]
 
 [params]
 
