@@ -1,9 +1,8 @@
-extends Area2D
-
+extends KinematicBody2D
 
 var acceleration = Vector2()
 var motion = Vector2()
-const MAX_SPEED = 15
+const MAX_SPEED = 50
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,7 +24,8 @@ func _process(delta):
 #	direction = direction.normalized()
 	
 
-	position += motion
+	move_and_slide(motion*30)
+#	position += motion
 #	position += get_node("./Camera2D/Interface/Analog").stick_vector * get_node("./Camera2D/Interface/Analog").stick_speed * 2 * delta
 	
 	
