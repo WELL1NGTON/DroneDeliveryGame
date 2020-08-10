@@ -17,7 +17,7 @@ func _process(delta):
 	var y = rng.randf_range(-1,1)
 	wind_speed += rng.randf_range(-1,1) * delta
 	wind_speed = min(wind_speed, 1)
-	wind_speed = max(wind_speed, 0)
+	wind_speed = max(wind_speed, 0.5)
 	wind_direction += Vector2(x,y) * delta
 	wind_direction = wind_direction.normalized()
 #	wind_direction += Vector2(x*delta*10,y*delta*10)

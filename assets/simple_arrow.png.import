@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grass_test.png-4a8bde469f1ce75c8524250d49329443.stex"
+path="res://.import/simple_arrow.png-a77f7eeb65f94c3a43c3a9388c2157cc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/grass_test.png"
-dest_files=[ "res://.import/grass_test.png-4a8bde469f1ce75c8524250d49329443.stex" ]
+source_file="res://assets/simple_arrow.png"
+dest_files=[ "res://.import/simple_arrow.png-a77f7eeb65f94c3a43c3a9388c2157cc.stex" ]
 
 [params]
 
@@ -19,8 +19,8 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
-flags/filter=false
+flags/repeat=0
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
