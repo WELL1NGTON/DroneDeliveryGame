@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/simple_arrow.png" type="Texture" id=1]
+[ext_resource path="res://scenes/SimpleArrow.gd" type="Script" id=2]
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0.110992, 0.157547, 0, 0, 0, 0, -0.000244141, 18.6228, 0, 0, 0, 0, 0.444702, 0.268784, 0, 0, 0, 0, 0.333466, -17.6403, 0, 0, 0, 0, 0.444702, 0.0463104 )
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64, 64 )
+
+[node name="SimpleArrow" type="Path2D"]
+curve = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0.110992, 0.157547 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( 0.110992, 0.157547 )
+rotate = false
+
+[node name="Sprite" type="Sprite" parent="PathFollow2D"]
+texture = ExtResource( 1 )
