@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/road3.png-098552ebe07a3ba46c2563712b76ae80.stex"
+path="res://.import/groundtiles.png-ca458f6c31a8cac8e1783d1f14ee681b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/road3.png"
-dest_files=[ "res://.import/road3.png-098552ebe07a3ba46c2563712b76ae80.stex" ]
+source_file="res://assets/groundtiles.png"
+dest_files=[ "res://.import/groundtiles.png-ca458f6c31a8cac8e1783d1f14ee681b.stex" ]
 
 [params]
 

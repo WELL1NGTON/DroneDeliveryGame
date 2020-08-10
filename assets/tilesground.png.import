@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/road.png-72005ad96a94b3869b023c4f4a0b0b7d.stex"
+path="res://.import/tilesground.png-84eae0d63160e6c5bd42777d2fb6b788.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/road.png"
-dest_files=[ "res://.import/road.png-72005ad96a94b3869b023c4f4a0b0b7d.stex" ]
+source_file="res://assets/tilesground.png"
+dest_files=[ "res://.import/tilesground.png-84eae0d63160e6c5bd42777d2fb6b788.stex" ]
 
 [params]
 
