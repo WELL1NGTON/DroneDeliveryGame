@@ -30,7 +30,7 @@ window/size/width=1920
 window/size/height=1080
 window/handheld/orientation="sensor"
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="expand"
 
 [gdnative]
 
