@@ -20,7 +20,7 @@ func _ready():
 	var simple_arrow = simple_arrow_scene.instance()
 	simple_arrow.position.x = random_construction_position.x + 128
 	simple_arrow.position.y = random_construction_position.y + 30
-	get_tree().get_root().get_node("./DroneGame/Node2D").add_child(simple_arrow)
+	get_tree().get_root().get_node("./DroneGame/Objective").add_child(simple_arrow)
 	pass
 	
 func get_random_construction():

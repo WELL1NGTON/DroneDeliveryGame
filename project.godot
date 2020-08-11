@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://git_api.gdns"
+} ]
 _global_script_class_icons={
-
+"GitAPI": ""
 }
 
 [application]
@@ -25,7 +30,11 @@ window/size/width=1920
 window/size/height=1080
 window/handheld/orientation="sensor"
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="expand"
+
+[gdnative]
+
+singletons=[ "res://git_api.gdnlib" ]
 
 [input_devices]
 
