@@ -3,6 +3,7 @@ extends Node2D
 onready var constructions = $Constructions
 onready var houses = constructions.get_used_cells_by_id(constructions.tile_set.find_tile_by_name("house.png"))
 onready var buildings = constructions.get_used_cells_by_id(constructions.tile_set.find_tile_by_name("building.png"))
+onready var post_offices = constructions.get_used_cells_by_id(constructions.tile_set.find_tile_by_name("postoffice.png"))
 var simple_arrow_scene = preload("res://scenes/SimpleArrow.tscn")
 
 var rng = RandomNumberGenerator.new()
@@ -20,7 +21,7 @@ func _ready():
 	var simple_arrow = simple_arrow_scene.instance()
 	simple_arrow.position.x = random_construction_position.x + 128
 	simple_arrow.position.y = random_construction_position.y + 30
-	get_tree().get_root().get_node("./DroneGame/Node2D").add_child(simple_arrow)
+	get_tree().get_root().get_node("./DroneGame/Objective").add_child(simple_arrow)
 	pass
 	
 func get_random_construction():
@@ -30,3 +31,9 @@ func get_random_construction():
 	else:
 		print("another building selected")
 		return buildings[rng.randi_range(0,buildings.size() - 1)]
+
+func get_post_office_position():
+	if post_offices.size() > 0:
+		return constructions.map_to_world(post_offices[0]) + Vector2(215,100)
+	else:
+		return Vector2.ZERO

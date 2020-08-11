@@ -1,53 +1,46 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/bird.png" type="Texture" id=2]
+[ext_resource path="res://scripts/MainGameScreen.gd" type="Script" id=3]
+[ext_resource path="res://TestePath2D.gd" type="Script" id=4]
+[ext_resource path="res://assets/drone.png" type="Texture" id=5]
 [ext_resource path="res://GameBackGround.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 106.87, 120.983 )
-
-[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 68.3823, 31.6198 )
 
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 15.5731, -7.56409, -15.5731, 7.56409, -1570.1, -687.568, -39.1553, 20.0226, 39.1553, -20.0226, -1356.08, -846.21, -169.525, 5.33936, 169.525, -5.33936, -748.456, -1051.25, -24.917, -16.908, 24.917, 16.908, -510.494, -994.375, -25.362, -64.9622, 25.362, 64.9622, -401.241, -855.189, 30.7013, -158.401, -30.7013, 158.401, -281.512, -418.177, 69.9246, -73.4561, -69.9246, 73.4561, -417.704, -114.364, 190.703, -132.786, -190.703, 132.786, -639.203, 105.638, 141.968, -24.0145, -141.968, 24.0145, -1040.3, 268.769, 73.4561, 38.847, -73.4561, -38.847, -1456.36, 225.368, 55.0921, 54.3858, -55.0921, -54.3858, -1788.6, 45.7736, 26.8397, 72.0435, -26.8397, -72.0435, -1869.42, -112.868, -14.1262, 79.8129, 14.1262, -79.8129, -1914.32, -319.401, -122.898, 48.029, 122.898, -48.029, -1812.55, -642.67, -34.6091, -16.9514, 34.6091, 16.9514, -1664.38, -660.629, -6.22925, 4.89441, 6.22925, -4.89441, -1580.57, -675.595, 0, 0, 0, 0, -1569.16, -687.352 )
+}
+
 [node name="DroneGame" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Background" parent="." instance=ExtResource( 7 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 264.075, -204.856 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2( -471.987, -28.5732 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( 264.075, -204.856 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2( 0.529114, 461.934 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2( 264.075, -204.856 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2( -443.943, 455.055 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2( 264.075, -204.856 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="."]
+[node name="StaticBody2D5" type="RigidBody2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D5"]
 position = Vector2( 896.662, -318.707 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5/Sprite"]
-shape = SubResource( 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
+position = Vector2( 896.662, -318.707 )
+shape = SubResource( 1 )
+
+[node name="Objective" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 2 )
+script = ExtResource( 4 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( -1570.1, -687.568 )
+rotation = -0.899218
+
+[node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D"]
+texture = ExtResource( 5 )
