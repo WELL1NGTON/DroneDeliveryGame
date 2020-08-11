@@ -3,6 +3,7 @@
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/bird.png" type="Texture" id=2]
 [ext_resource path="res://GameBackGround.tscn" type="PackedScene" id=7]
+[ext_resource path="res://interface/Interface.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 106.87, 120.983 )
