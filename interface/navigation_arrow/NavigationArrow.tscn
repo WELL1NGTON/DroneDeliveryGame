@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://interface/navigation_arrow/simple_arrow.png" type="Texture" id=1]
+[ext_resource path="res://interface/navigation_arrow/NavigationArrow.gd" type="Script" id=2]
 
 [node name="NavigationArrow" type="CenterContainer"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 128.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 64, 64 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
