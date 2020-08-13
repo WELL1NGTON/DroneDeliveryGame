@@ -1,7 +1,5 @@
 extends Path2D
 
-# https://www.youtube.com/watch?v=_lJ0jbahbjw
-
 onready var follow = get_node("PathFollow2D")
 
 var tween
@@ -16,3 +14,4 @@ func _ready():
 								tween.EASE_IN_OUT)
 	tween.set_repeat(true)
 	tween.start()
+

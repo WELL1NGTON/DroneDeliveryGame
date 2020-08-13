@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/bird.png" type="Texture" id=2]
 [ext_resource path="res://scripts/MainGameScreen.gd" type="Script" id=3]
 [ext_resource path="res://TestePath2D.gd" type="Script" id=4]
@@ -54,3 +54,5 @@ zoom = Vector2( 0.75, 0.75 )
 script = ExtResource( 6 )
 
 [node name="Interface" parent="Player/Camera2D" instance=ExtResource( 8 )]
+
+[node name="PostOffices" type="Node2D" parent="."]

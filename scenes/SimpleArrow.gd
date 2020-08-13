@@ -1,22 +1,8 @@
-extends Path2D
+extends Area2D
 
 
-onready var follow = get_node("PathFollow2D")
-
-var tween
-
-func _ready():
-	set_process(true)
-	tween = Tween.new()
-	add_child(tween)
-	tween.interpolate_property(follow, "unit_offset",
-								0, 1, 6,
-								tween.TRANS_LINEAR,
-								tween.EASE_IN_OUT)
-	tween.set_repeat(true)
-	tween.start()
-
-func _process(delta):
-#	follow.set_offset(follow.get_offset() + 360 * delta)
-	pass
-
+#using this insteady of _ready() because of instantiations 
+func _enter_tree():
+	var PlayerNode = get_tree().get_root().get_node("./DroneGame/Player")
+#	print("post office connected")
+	self.connect("body_entered",PlayerNode,"entered_objective", [self])

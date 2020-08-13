@@ -4,7 +4,7 @@ onready var constructions = $Constructions
 onready var houses = constructions.get_used_cells_by_id(constructions.tile_set.find_tile_by_name("house.png"))
 onready var buildings = constructions.get_used_cells_by_id(constructions.tile_set.find_tile_by_name("building.png"))
 onready var post_offices = constructions.get_used_cells_by_id(constructions.tile_set.find_tile_by_name("postoffice.png"))
-
+var post_office_area_2d = preload("res://scenes/PostOffice/PostOffice.tscn")
 
 var rng = RandomNumberGenerator.new()
 
@@ -16,7 +16,7 @@ func _ready():
 #		constructions.set_cell(building.x, building.y, -1)
 	var static_body = StaticBody2D.new()
 	var collision_shape_2d = CollisionShape2D.new()
-	pass
+	load_post_offices_areas(post_offices)
 	
 func get_random_construction():
 	if rng.randi_range(0,1) == 0: #0 houses, 1 buildings
@@ -31,3 +31,9 @@ func get_post_office_position():
 		return constructions.map_to_world(post_offices[0]) + Vector2(215,100)
 	else:
 		return Vector2.ZERO
+
+func load_post_offices_areas(post_offices : Array):
+	for post_office in post_offices:
+		var post_office_area_instance = post_office_area_2d.instance()
+		post_office_area_instance.position = constructions.map_to_world(post_office)
+		get_node("/root/DroneGame/PostOffices").add_child(post_office_area_instance)
