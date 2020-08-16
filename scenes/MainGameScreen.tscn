@@ -5,9 +5,9 @@
 [ext_resource path="res://scripts/MainGameScreen.gd" type="Script" id=3]
 [ext_resource path="res://TestePath2D.gd" type="Script" id=4]
 [ext_resource path="res://assets/drone.png" type="Texture" id=5]
-[ext_resource path="res://scripts/TightCamera.gd" type="Script" id=6]
 [ext_resource path="res://GameBackGround.tscn" type="PackedScene" id=7]
-[ext_resource path="res://interface/Interface.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/music_1.wav" type="AudioStream" id=9]
+[ext_resource path="res://scenes/Enemy/birds/Bird.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 68.3823, 31.6198 )
@@ -48,11 +48,23 @@ texture = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
-zoom = Vector2( 0.75, 0.75 )
-script = ExtResource( 6 )
+[node name="DroneAnimatedSprite" parent="Player" index="1"]
+frame = 3
 
-[node name="Interface" parent="Player/Camera2D" instance=ExtResource( 8 )]
+[node name="ShockAnimatedSprite" parent="Player/DroneAnimatedSprite" index="1"]
+frame = 2
 
 [node name="PostOffices" type="Node2D" parent="."]
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Bird" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 1246.04, 123.452 )
+
+[editable path="Player"]
+
+[editable path="Player/Camera2D/Interface"]

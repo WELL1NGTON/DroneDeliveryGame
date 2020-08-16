@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/energy_icon.png-c84fe0c910ed450c9ff9398f7172c758.stex"
+path="res://.import/mailbox.png-e3bcd22ce9200c8666ec782532b44f7e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interface/counter/energy/energy_icon.png"
-dest_files=[ "res://.import/energy_icon.png-c84fe0c910ed450c9ff9398f7172c758.stex" ]
+source_file="res://assets/mailbox.png"
+dest_files=[ "res://.import/mailbox.png-e3bcd22ce9200c8666ec782532b44f7e.stex" ]
 
 [params]
 

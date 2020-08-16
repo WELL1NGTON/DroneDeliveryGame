@@ -1,15 +1,18 @@
 extends KinematicBody2D
 
+signal delivery_completed
 var acceleration = Vector2.ZERO
 var motion = Vector2.ZERO
 var is_charging = false
 var is_holding_package = false
+var invulnerable = false
 const MAX_SPEED = 30
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	reset_attributes()
-	pass # Replace with function body.
+	self.connect("delivery_completed", get_parent(), "package_delivered")
+	self.connect("delivery_completed", $Camera2D/Interface/DeliveriesCounter, "package_delivered")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,6 +46,7 @@ func entered_post_office(_body):
 		is_charging = true
 		if is_holding_package == false:
 			is_holding_package = true
+			$DroneAnimatedSprite/PackageSprite.visible = true
 			get_parent().new_objective()
 
 func exited_post_office(_body):
@@ -53,6 +57,19 @@ func entered_objective(_body, simple_arrow : Node):
 	if _body == self:
 		if is_holding_package == true:
 			is_holding_package = false
-			var timer = get_node_or_null("./Camera2D/Interface/TimerLabel")
-			timer.timer += 10
-			get_parent().package_delivered(simple_arrow)
+			$DroneAnimatedSprite/PackageSprite.visible = false
+			emit_signal("delivery_completed", simple_arrow)
+			
+#			get_parent().package_delivered(simple_arrow)
+
+func hit_bird(_body):
+	if _body == self && invulnerable == false:
+		invulnerable = true
+		$GotHitTimer.start(1)
+		$DroneAnimatedSprite/ShockAnimatedSprite.visible = true
+		$Camera2D/Interface/EnergyBar.energy -= 10
+
+func _on_GotHitTimer_timeout():
+	$DroneAnimatedSprite/ShockAnimatedSprite.visible = false
+	invulnerable = false
+	

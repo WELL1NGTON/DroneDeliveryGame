@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://interface/bar/energy/EnergyBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interface/controls/analog/Analog.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://interface/navigation_arrow/NavigationArrow.tscn" type="PackedScene" id=6]
 [ext_resource path="res://interface/bar/energy/EnergyBar.gd" type="Script" id=7]
 [ext_resource path="res://interface/TimerLabel.gd" type="Script" id=8]
+[ext_resource path="res://interface/counter/deliveries/DeliveriesCounter.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game_over_screen/GameOverScreen.tscn" type="PackedScene" id=10]
 
 [node name="Interface" type="Control"]
 anchor_right = 1.0
@@ -55,3 +57,16 @@ margin_left = -63.9999
 margin_top = 90.0
 margin_right = 64.0
 margin_bottom = 218.0
+
+[node name="DeliveriesCounter" parent="." instance=ExtResource( 9 )]
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -160.0
+margin_top = 100.0
+margin_right = -31.9999
+margin_bottom = 132.0
+
+[node name="GameOverScreen" parent="." instance=ExtResource( 10 )]
+visible = false
