@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main_menu/buttons/MenuButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main_menu/fonts/04b_32.tres" type="DynamicFont" id=2]
+
+[node name="ReturnMainMenu" instance=ExtResource( 1 )]
+scene_to_load = "res://main_menu/MainMenu.tscn"
+
+[node name="Label" parent="." index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -788.0
+margin_top = -32.0
+margin_right = 788.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+custom_constants/shadow_as_outline = 1
+text = "RERTURN TO MAIN MENU"
+align = 1
+valign = 1

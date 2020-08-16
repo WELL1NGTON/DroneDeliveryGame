@@ -1,47 +1,98 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Player/drones.png" type="Texture" id=1]
+[ext_resource path="res://assets/mailbox.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Player/Player.gd" type="Script" id=3]
+[ext_resource path="res://scripts/TightCamera.gd" type="Script" id=4]
+[ext_resource path="res://interface/Interface.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Player/shock.png" type="Texture" id=6]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 130, 130 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 130, 0, 130, 130 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 130, 130, 130 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 130, 130, 130, 130 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "default",
 "speed": 40.0
 } ]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 258, 258 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 258, 0, 258, 258 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 258, 258, 258 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=10]
 radius = 48.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 3 )
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
+[node name="GotHitTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="DroneAnimatedSprite" type="AnimatedSprite" parent="."]
 rotation = 0.785398
+frames = SubResource( 5 )
+playing = true
+
+[node name="PackageSprite" type="Sprite" parent="DroneAnimatedSprite"]
+visible = false
+show_behind_parent = true
+rotation = -0.785398
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
+
+[node name="ShockAnimatedSprite" type="AnimatedSprite" parent="DroneAnimatedSprite"]
+visible = false
 scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 6 )
+frames = SubResource( 9 )
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 10 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.75, 0.75 )
+script = ExtResource( 4 )
+
+[node name="Interface" parent="Camera2D" instance=ExtResource( 5 )]
+[connection signal="timeout" from="GotHitTimer" to="." method="_on_GotHitTimer_timeout"]

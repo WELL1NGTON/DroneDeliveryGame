@@ -25,3 +25,13 @@ func new_objective():
 func package_delivered(simple_arrow : Node):
 	objective.position = post_office_position
 	objective.remove_child(simple_arrow)
+	var timer = get_node_or_null("./Player/Camera2D/Interface/TimerLabel")
+	timer.timer += 10
+
+func game_over():
+	$Player.set_process(false)
+	$Player/Camera2D/Interface/TimerLabel.set_process(false)
+	$Player/Camera2D/Interface/EnergyBar.set_process(false)
+	$Player/Camera2D/Interface/GameOverScreen/CenterContainer/VBoxContainer/Label.text = $Player/Camera2D/Interface/DeliveriesCounter/Label.text + " ENCOMENDAS ENTREGUES"
+	$Player/Camera2D/Interface/GameOverScreen.visible = true
+#	get_tree().change_scene("res://game_over_screen/GameOverScreen.tscn")

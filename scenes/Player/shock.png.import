@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/energy_icon.png-c84fe0c910ed450c9ff9398f7172c758.stex"
+path="res://.import/shock.png-5628e25ad1f7183cfd8fe63bdeec88e6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interface/counter/energy/energy_icon.png"
-dest_files=[ "res://.import/energy_icon.png-c84fe0c910ed450c9ff9398f7172c758.stex" ]
+source_file="res://scenes/Player/shock.png"
+dest_files=[ "res://.import/shock.png-5628e25ad1f7183cfd8fe63bdeec88e6.stex" ]
 
 [params]
 
