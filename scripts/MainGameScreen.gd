@@ -21,6 +21,7 @@ func new_objective():
 	objective.position.y = random_construction_position.y + 30
 	var simple_arrow = simple_arrow_scene.instance()
 	objective.add_child(simple_arrow)
+	
 
 func package_delivered(simple_arrow : Node):
 	objective.position = post_office_position
