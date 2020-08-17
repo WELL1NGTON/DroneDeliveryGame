@@ -49,8 +49,8 @@ func reset_attributes():
 func entered_post_office(_body):
 	if _body == self:
 		is_charging = true
-		chargingParticles.emitting = true
-		chargingSound.play()
+#		chargingParticles.emitting = true
+#		chargingSound.play()
 		if is_holding_package == false:
 			is_holding_package = true
 			$DroneAnimatedSprite/PackageSprite.visible = true
@@ -59,8 +59,8 @@ func entered_post_office(_body):
 func exited_post_office(_body):
 	if _body == self:
 		is_charging = false
-		chargingSound.stop()
-		chargingParticles.emitting = false
+#		chargingSound.stop()
+#		chargingParticles.emitting = false
 	
 func entered_objective(_body, simple_arrow : Node):
 	if _body == self:
@@ -68,8 +68,8 @@ func entered_objective(_body, simple_arrow : Node):
 			is_holding_package = false
 			$DroneAnimatedSprite/PackageSprite.visible = false
 			emit_signal("delivery_completed", simple_arrow)
-			deliveryParticles.emitting = true
-			deliverySound.play()
+#			deliveryParticles.emitting = true
+#			deliverySound.play()
 			
 #			get_parent().package_delivered(simple_arrow)
 
@@ -79,7 +79,7 @@ func hit_bird(_body):
 		$GotHitTimer.start(1)
 		$DroneAnimatedSprite/ShockAnimatedSprite.visible = true
 		$Camera2D/Interface/EnergyBar.energy -= 10
-		sparkParticles.emitting = true
+#		sparkParticles.emitting = true
 
 func _on_GotHitTimer_timeout():
 	$DroneAnimatedSprite/ShockAnimatedSprite.visible = false

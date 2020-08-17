@@ -63,6 +63,9 @@ radius = 48.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="GotHitTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -71,7 +74,11 @@ one_shot = true
 [node name="DroneAnimatedSprite" type="AnimatedSprite" parent="."]
 rotation = 0.785398
 frames = SubResource( 5 )
+frame = 3
 playing = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="PackageSprite" type="Sprite" parent="DroneAnimatedSprite"]
 visible = false
@@ -79,20 +86,33 @@ show_behind_parent = true
 rotation = -0.785398
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ShockAnimatedSprite" type="AnimatedSprite" parent="DroneAnimatedSprite"]
 visible = false
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 9 )
+frame = 1
 playing = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 10 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.75, 0.75 )
+zoom = Vector2( 4, 4 )
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Interface" parent="Camera2D" instance=ExtResource( 5 )]
 [connection signal="timeout" from="GotHitTimer" to="." method="_on_GotHitTimer_timeout"]
