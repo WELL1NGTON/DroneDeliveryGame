@@ -1,6 +1,6 @@
 extends Sprite
 
-const CIRCLES_SCALE = 3
+const CIRCLES_SCALE = 4
 const EXTERNAL_RADIUS = 64 * CIRCLES_SCALE
 const INTERNAL_RADIUS = 32 * CIRCLES_SCALE
 

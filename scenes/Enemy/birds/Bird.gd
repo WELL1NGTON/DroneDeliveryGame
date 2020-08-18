@@ -1,23 +1,24 @@
 extends Node2D
 
-const MAX_SPEED = 20
-const MAX_ACCELERATION = 40
+const NUMBER_OF_BIRDS_AWARENESS = 3
+const MAX_SPEED = 10
+const MAX_ACCELERATION = 8
 const MAX_FORCE = 0.001
 var motion = Vector2.ZERO
 var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
 
-var alignmentMultiplier = 0.1
-var cohesionMultiplier = 0.1
-var separationMultiplier = 0.1
+var alignmentMultiplier = 0.05
+var cohesionMultiplier = 0.001
+var separationMultiplier = 0.01
 
 func _physics_process(delta):
 	flock()
 	self.position += velocity
 	self.velocity += acceleration
 	self.velocity.clamped(MAX_SPEED)
-	self.acceleration *= 0
+	self.acceleration *= 0.5
 #	apply_movement(direction * MAX_ACCELERATION * delta)
 #	position += motion
 	self.rotation = velocity.angle() - PI/2
@@ -28,13 +29,15 @@ func apply_movement(acceleration):
 	motion = motion.clamped(MAX_SPEED)
 
 func align(boids):
-	var perceptionRadius = 320/2
+	var perceptionRadius = $PerceptionRadius/CollisionShape2D.shape.radius/2
 	var steering = Vector2.ZERO
 	var total = 0
 	for boid in boids:
 		var bird = boid.get_parent()
 		steering += bird.velocity
 		total += 1
+		if total >= NUMBER_OF_BIRDS_AWARENESS:
+				break
 	if total > 0:
 		steering /= total
 		steering = steering.normalized() * MAX_SPEED
@@ -43,7 +46,7 @@ func align(boids):
 	return steering
 
 func cohesion(boids):
-	var perceptionRadius = 320
+	var perceptionRadius = $PerceptionRadius/CollisionShape2D.shape.radius
 	var steering = Vector2.ZERO
 	var total = 0
 	for boid in boids:
@@ -51,6 +54,8 @@ func cohesion(boids):
 		if self.position.distance_to(bird.position) < perceptionRadius:
 			steering += bird.position
 			total += 1
+			if total >= NUMBER_OF_BIRDS_AWARENESS:
+				break
 	if total > 0:
 		steering /= total
 		steering -= self.position
@@ -60,7 +65,7 @@ func cohesion(boids):
 	return steering
 
 func separation(boids):
-	var perceptionRadius = 320/2
+	var perceptionRadius = $PerceptionRadius/CollisionShape2D.shape.radius * 1.25
 	var steering = Vector2.ZERO
 	var total = 0
 	for boid in boids:
@@ -71,6 +76,8 @@ func separation(boids):
 			diff /= distance * distance
 			steering += diff
 			total += 1
+			if total >= NUMBER_OF_BIRDS_AWARENESS:
+				break
 	if total > 0:
 		steering /= total
 		steering = steering.normalized() * MAX_SPEED

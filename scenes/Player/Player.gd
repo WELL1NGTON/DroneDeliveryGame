@@ -35,7 +35,7 @@ func _process(delta):
 	move_and_slide(motion*20)
 #	position += motion
 #	position += get_node("./Camera2D/Interface/Analog").stick_vector * get_node("./Camera2D/Interface/Analog").stick_speed * 2 * delta
-	
+
 func reset_attributes():
 	var energy_bar = get_node_or_null("./Camera2D/Interface/EnergyBar")
 	energy_bar.energy = 100
@@ -61,7 +61,7 @@ func exited_post_office(_body):
 		is_charging = false
 #		chargingSound.stop()
 #		chargingParticles.emitting = false
-	
+
 func entered_objective(_body, simple_arrow : Node):
 	if _body == self:
 		if is_holding_package == true:
@@ -70,12 +70,12 @@ func entered_objective(_body, simple_arrow : Node):
 			emit_signal("delivery_completed", simple_arrow)
 #			deliveryParticles.emitting = true
 #			deliverySound.play()
-			
 #			get_parent().package_delivered(simple_arrow)
 
 func hit_bird(_body):
 	if _body == self && invulnerable == false:
 		invulnerable = true
+		$ImpactSound.play(0)
 		$GotHitTimer.start(1)
 		$DroneAnimatedSprite/ShockAnimatedSprite.visible = true
 		$Camera2D/Interface/EnergyBar.energy -= 10
@@ -84,4 +84,4 @@ func hit_bird(_body):
 func _on_GotHitTimer_timeout():
 	$DroneAnimatedSprite/ShockAnimatedSprite.visible = false
 	invulnerable = false
-	
+

@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-signal game_over
+#signal game_over
 
 var energy
 var battery_drain = 1
@@ -17,7 +17,7 @@ func _ready():
 	energy_label.text = str(int(energy)) + "/100"
 	energy_bar.value = energy
 	player = get_tree().get_root().get_node_or_null("./DroneGame/Player")
-	self.connect("game_over", drone_game, "game_over")
+#	self.connect("game_over", drone_game, "game_over")
 
 func _process(delta):
 	
@@ -30,8 +30,8 @@ func _process(delta):
 		if energy <= 0:
 			energy = 0
 			emit_signal("game_over")
-			self.disconnect("game_over", drone_game, "game_over")
-			set_process(false)
+#			self.disconnect("game_over", drone_game, "game_over")
+#			set_process(false)
 		elif energy > 100:
 			energy = 100
 			
