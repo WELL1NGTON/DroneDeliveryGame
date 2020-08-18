@@ -18,6 +18,10 @@ _global_script_class_icons={
 "GitAPI": ""
 }
 
+[Application]
+
+Audio/MusicVolume=0.0
+
 [application]
 
 config/name="DroneDeliveryGame"
@@ -42,6 +46,7 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+environment/default_clear_color=Color( 0.121569, 0.176471, 0.211765, 1 )
 environment/default_environment="res://default_env.tres"
 
 [world]

@@ -1,0 +1,160 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://main_menu/fonts/RussoOne_48.tres" type="DynamicFont" id=1]
+[ext_resource path="res://main_menu/settings/SettingsScreen.gd" type="Script" id=2]
+[ext_resource path="res://assets/music_1.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/bonus_noCR.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/charging.wav" type="AudioStream" id=5]
+
+[node name="SettingsScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.24487
+margin_right = 2.24487
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 585.0
+margin_top = 305.0
+margin_right = 1335.0
+margin_bottom = 774.0
+rect_min_size = Vector2( 750, 400 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="MainMusic" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 750.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 500, 50 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MainMusic"]
+margin_right = 274.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0.223529, 0.0509804, 0.929412, 1 )
+custom_constants/shadow_offset_y = 5
+text = "Main Music"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MainMusic"]
+margin_left = 278.0
+margin_right = 573.0
+margin_bottom = 60.0
+custom_constants/margin_left = 95
+
+[node name="MainMusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/MainMusic/MarginContainer"]
+margin_left = 95.0
+margin_right = 295.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 200, 60 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = -30.0
+max_value = 0.0
+
+[node name="Sounds Effects" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 750.0
+margin_bottom = 124.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Sounds Effects"]
+margin_right = 345.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0.105882, 0.0392157, 0.866667, 1 )
+custom_constants/shadow_offset_y = 5
+text = "Sound Effects"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Sounds Effects"]
+margin_left = 349.0
+margin_right = 574.0
+margin_bottom = 60.0
+custom_constants/margin_left = 25
+
+[node name="SoundEffectSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Sounds Effects/MarginContainer"]
+margin_left = 25.0
+margin_right = 225.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 200, 60 )
+size_flags_horizontal = 3
+min_value = -30.0
+max_value = 0.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 128.0
+margin_right = 750.0
+margin_bottom = 469.0
+custom_constants/margin_right = 200
+custom_constants/margin_top = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+margin_top = 200.0
+margin_right = 550.0
+margin_bottom = 341.0
+size_flags_vertical = 0
+
+[node name="MainMusic" type="CheckBox" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_right = 550.0
+margin_bottom = 24.0
+text = "Audio"
+
+[node name="SoundEffect1" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 550.0
+margin_bottom = 48.0
+text = "Sound 1"
+
+[node name="SoundEffect2" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 52.0
+margin_right = 550.0
+margin_bottom = 72.0
+text = "Sound2"
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_left = 210.0
+margin_top = 76.0
+margin_right = 340.0
+margin_bottom = 141.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.0745098, 0.486275, 0.886275, 1 )
+text = "Back"
+
+[node name="MainMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Music"
+
+[node name="SoundEffect1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "SFX"
+
+[node name="SoundEffect2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "SFX"
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/MainMusic/MarginContainer/MainMusicSlider" to="." method="_on_MainMusicSlider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Sounds Effects/MarginContainer/SoundEffectSlider" to="." method="_on_SoundEffectSlider_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainMusic" to="." method="_on_Button2_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SoundEffect1" to="." method="_on_SoundEffect1_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SoundEffect2" to="." method="_on_SoundEffect2_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_Button_pressed"]
