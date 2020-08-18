@@ -31,6 +31,9 @@ func package_delivered(simple_arrow : Node):
 
 func game_over():
 	$Player.set_process(false)
+	$Player.set_physics_process(false)
+	$BirdsBoidSpawner.set_process(false)
+	$BirdsBoidSpawner/SpawnTimer.disconnect("timeout",$BirdsBoidSpawner,"_on_SpawnTimer_timeout")
 	$Player/Camera2D/Interface/TimerLabel.set_process(false)
 	$Player/Camera2D/Interface/EnergyBar.set_process(false)
 	$Player/Camera2D/Interface/GameOverScreen/CenterContainer/VBoxContainer/Label.text = $Player/Camera2D/Interface/DeliveriesCounter/Label.text + " ENCOMENDAS ENTREGUES"

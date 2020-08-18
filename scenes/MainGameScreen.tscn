@@ -1,34 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/BirdsBoid.gd" type="Script" id=2]
 [ext_resource path="res://scripts/MainGameScreen.gd" type="Script" id=3]
-[ext_resource path="res://TestePath2D.gd" type="Script" id=4]
-[ext_resource path="res://assets/drone.png" type="Texture" id=5]
 [ext_resource path="res://GameBackGround.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/music_1.wav" type="AudioStream" id=9]
-
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array( 15.5731, -7.56409, -15.5731, 7.56409, -1570.1, -687.568, -39.1553, 20.0226, 39.1553, -20.0226, -1356.08, -846.21, -169.525, 5.33936, 169.525, -5.33936, -748.456, -1051.25, -24.917, -16.908, 24.917, 16.908, -510.494, -994.375, -25.362, -64.9622, 25.362, 64.9622, -401.241, -855.189, 30.7013, -158.401, -30.7013, 158.401, -281.512, -418.177, 69.9246, -73.4561, -69.9246, 73.4561, -417.704, -114.364, 190.703, -132.786, -190.703, 132.786, -639.203, 105.638, 141.968, -24.0145, -141.968, 24.0145, -1040.3, 268.769, 73.4561, 38.847, -73.4561, -38.847, -1456.36, 225.368, 55.0921, 54.3858, -55.0921, -54.3858, -1788.6, 45.7736, 26.8397, 72.0435, -26.8397, -72.0435, -1869.42, -112.868, -14.1262, 79.8129, 14.1262, -79.8129, -1914.32, -319.401, -122.898, 48.029, 122.898, -48.029, -1812.55, -642.67, -34.6091, -16.9514, 34.6091, 16.9514, -1664.38, -660.629, -6.22925, 4.89441, 6.22925, -4.89441, -1580.57, -675.595, 0, 0, 0, 0, -1569.16, -687.352 )
-}
 
 [node name="DroneGame" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="Background" parent="." instance=ExtResource( 7 )]
-
-[node name="Path2D" type="Path2D" parent="."]
-visible = false
-curve = SubResource( 1 )
-script = ExtResource( 4 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( -1570.1, -687.568 )
-rotation = -0.899218
-
-[node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D"]
-texture = ExtResource( 5 )
 
 [node name="Objective" type="Node2D" parent="."]
 
@@ -38,14 +19,15 @@ texture = ExtResource( 5 )
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+autoplay = true
 
-[node name="BirdsBoid" type="Node2D" parent="."]
+[node name="BirdsBoidSpawner" type="Node2D" parent="."]
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SpawnTimer" type="Timer" parent="BirdsBoid"]
-wait_time = 5.0
+[node name="SpawnTimer" type="Timer" parent="BirdsBoidSpawner"]
+wait_time = 10.0
 autostart = true
-[connection signal="timeout" from="BirdsBoid/SpawnTimer" to="BirdsBoid" method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="BirdsBoidSpawner/SpawnTimer" to="BirdsBoidSpawner" method="_on_SpawnTimer_timeout"]

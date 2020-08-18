@@ -10,8 +10,8 @@ script = ExtResource( 2 )
 
 [node name="ExternalArea" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.392157 )
-position = Vector2( 208.539, 873.882 )
-scale = Vector2( 3, 3 )
+position = Vector2( 275, 805 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 script = ExtResource( 3 )
 
