@@ -10,8 +10,8 @@ const MAX_SPEED = 30
 onready var sparkParticles = get_node("DroneAnimatedSprite/SparkParticles")
 onready var chargingParticles = get_node("DroneAnimatedSprite/ChargingParticles")
 onready var deliveryParticles = get_node("DroneAnimatedSprite/DeliveryParticles")
-onready var deliverySound = $DroneAnimatedSprite/DeliverySound
-onready var chargingSound = $DroneAnimatedSprite/ChargingSound
+onready var deliverySound = $DeliverySound
+onready var chargingSound = $ChargingSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,8 +49,8 @@ func reset_attributes():
 func entered_post_office(_body):
 	if _body == self:
 		is_charging = true
-#		chargingParticles.emitting = true
-#		chargingSound.play()
+		chargingParticles.emitting = true
+		chargingSound.play()
 		if is_holding_package == false:
 			is_holding_package = true
 			$DroneAnimatedSprite/PackageSprite.visible = true
@@ -59,8 +59,8 @@ func entered_post_office(_body):
 func exited_post_office(_body):
 	if _body == self:
 		is_charging = false
-#		chargingSound.stop()
-#		chargingParticles.emitting = false
+		chargingSound.stop()
+		chargingParticles.emitting = false
 
 func entered_objective(_body, simple_arrow : Node):
 	if _body == self:
@@ -68,9 +68,9 @@ func entered_objective(_body, simple_arrow : Node):
 			is_holding_package = false
 			$DroneAnimatedSprite/PackageSprite.visible = false
 			emit_signal("delivery_completed", simple_arrow)
-#			deliveryParticles.emitting = true
-#			deliverySound.play()
-#			get_parent().package_delivered(simple_arrow)
+			deliveryParticles.emitting = true
+			deliverySound.play()
+			get_parent().package_delivered(simple_arrow)
 
 func hit_bird(_body):
 	if _body == self && invulnerable == false:
@@ -79,7 +79,7 @@ func hit_bird(_body):
 		$GotHitTimer.start(1)
 		$DroneAnimatedSprite/ShockAnimatedSprite.visible = true
 		$Camera2D/Interface/EnergyBar.energy -= 10
-#		sparkParticles.emitting = true
+		sparkParticles.emitting = true
 
 func _on_GotHitTimer_timeout():
 	$DroneAnimatedSprite/ShockAnimatedSprite.visible = false
