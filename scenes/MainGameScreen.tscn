@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/BirdsBoid.gd" type="Script" id=2]
 [ext_resource path="res://scripts/MainGameScreen.gd" type="Script" id=3]
 [ext_resource path="res://TestePath2D.gd" type="Script" id=4]
 [ext_resource path="res://assets/drone.png" type="Texture" id=5]
+[ext_resource path="res://scripts/SaveLoad.gd" type="Script" id=6]
 [ext_resource path="res://GameBackGround.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/music_1.wav" type="AudioStream" id=9]
 
@@ -38,15 +39,23 @@ texture = ExtResource( 5 )
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+autoplay = true
 bus = "Music"
 
-[node name="BirdsBoid" type="Node2D" parent="."]
+[node name="BirdsBoidSpawner" type="Node2D" parent="."]
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SpawnTimer" type="Timer" parent="BirdsBoid"]
+[node name="SpawnTimer" type="Timer" parent="BirdsBoidSpawner"]
 wait_time = 5.0
 autostart = true
-[connection signal="timeout" from="BirdsBoid/SpawnTimer" to="BirdsBoid" method="_on_SpawnTimer_timeout"]
+
+[node name="SettingsLoad" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="ScoreSaveLoad" type="Node" parent="."]
+script = ExtResource( 6 )
+save_path = "user://user_saves/score.dat"
+[connection signal="timeout" from="BirdsBoidSpawner/SpawnTimer" to="BirdsBoidSpawner" method="_on_SpawnTimer_timeout"]

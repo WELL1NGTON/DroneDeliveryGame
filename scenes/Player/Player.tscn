@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scenes/Player/drones.png" type="Texture" id=1]
 [ext_resource path="res://assets/mailbox.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/light.png" type="Texture" id=8]
 [ext_resource path="res://assets/charging.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/bonus_noCR.wav" type="AudioStream" id=10]
+[ext_resource path="res://scripts/SaveLoad.gd" type="Script" id=11]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -133,6 +134,7 @@ __meta__ = {
 visible = false
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 9 )
+frame = 2
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -168,7 +170,6 @@ __meta__ = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 4, 4 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
@@ -184,4 +185,7 @@ stream = ExtResource( 9 )
 
 [node name="DeliverySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+
+[node name="SettingsLoad" type="Node" parent="."]
+script = ExtResource( 11 )
 [connection signal="timeout" from="GotHitTimer" to="." method="_on_GotHitTimer_timeout"]

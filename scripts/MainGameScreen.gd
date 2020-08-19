@@ -7,7 +7,26 @@ onready var post_office_position = game_bg.get_post_office_position()
 onready var player = $Player
 onready var objective = $Objective
 
+var settings_data = {
+	"music_volume" : 0,
+	"sound_effects" : 0
+}
+
+var scores_data = {
+	"high_score" : 0
+}
+
 func _ready():
+	var loaded_settings_data = $SettingsLoad.load()
+	if loaded_settings_data != null:
+		settings_data = loaded_settings_data
+	$BGMusic.volume_db = settings_data["music_volume"]
+	
+	var loaded_score_data = $ScoreSaveLoad.load()
+	if loaded_score_data != null:
+		scores_data = loaded_score_data
+	
+	
 	player.position = post_office_position
 	objective.position = post_office_position
 
@@ -36,6 +55,14 @@ func game_over():
 	$BirdsBoidSpawner/SpawnTimer.disconnect("timeout",$BirdsBoidSpawner,"_on_SpawnTimer_timeout")
 	$Player/Camera2D/Interface/TimerLabel.set_process(false)
 	$Player/Camera2D/Interface/EnergyBar.set_process(false)
-	$Player/Camera2D/Interface/GameOverScreen/CenterContainer/VBoxContainer/Label.text = $Player/Camera2D/Interface/DeliveriesCounter/Label.text + " ENCOMENDAS ENTREGUES"
+	var points = $Player/Camera2D/Interface/DeliveriesCounter.points
+	if points > scores_data["high_score"]:
+		scores_data["high_score"] = points
+	scores_data[str(OS.get_ticks_msec())] = points
+	print(scores_data)
+	$ScoreSaveLoad.save(scores_data)
+	
+	$Player/Camera2D/Interface/GameOverScreen/CenterContainer/VBoxContainer/Label.text = str(points) + " ENCOMENDAS ENTREGUES"
+	$Player/Camera2D/Interface/GameOverScreen/CenterContainer/VBoxContainer/Label2.text = "MAIOR PONTUACAO: " + str(scores_data["high_score"])
 	$Player/Camera2D/Interface/GameOverScreen.visible = true
 #	get_tree().change_scene("res://game_over_screen/GameOverScreen.tscn")
