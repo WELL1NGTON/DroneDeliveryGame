@@ -26,9 +26,8 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_top = 16.0
 margin_right = 800.0
-margin_bottom = 198.0
+margin_bottom = 264.0
 custom_constants/separation = 50
 alignment = 1
 
@@ -40,6 +39,20 @@ margin_bottom = 100.0
 margin_top = 150.0
 margin_right = 800.0
 margin_bottom = 182.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+custom_constants/shadow_as_outline = 1
+text = "LABEL"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 232.0
+margin_right = 800.0
+margin_bottom = 264.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )

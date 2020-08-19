@@ -1,27 +1,20 @@
 extends Control
 
+var data = {
+	"music_volume" : 0,
+	"sound_effects" : 0
+}
 
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+	var loaded_data = $SaveLoad.load()
+	if loaded_data != null:
+		data = loaded_data
+	$MarginContainer/VBoxContainer/MainMusic/MarginContainer/MainMusicSlider.value = data["music_volume"]
+	$MarginContainer/VBoxContainer/SoundsEffects/MarginContainer/SoundEffectSlider.value = data["sound_effects"]
 
 func _on_Button_pressed():
+	$SaveLoad.save(data)
 	get_tree().change_scene("res://main_menu/MainMenu.tscn") # Replace with function body.
-
-
-
-
-
-
-
 
 func _on_Button2_toggled(button_pressed):
 	if button_pressed == true:
@@ -41,6 +34,7 @@ func _on_SoundEffect2_pressed():
 	# Replace with function body.
 	
 func _on_MainMusicSlider_value_changed(value):
+	data["music_volume"] = value
 	AudioServer.set_bus_volume_db(1, lerp(AudioServer.get_bus_volume_db(1), value, 0.5))
 	if value == -30:
 		AudioServer.set_bus_mute(1,true)
@@ -50,6 +44,7 @@ func _on_MainMusicSlider_value_changed(value):
 
 
 func _on_SoundEffectSlider_value_changed(value):
+	data["sound_effects"] = value
 	AudioServer.set_bus_volume_db(2, lerp(AudioServer.get_bus_volume_db(2), value, 0.5))
 	if value == -30:
 		AudioServer.set_bus_mute(2,true)
