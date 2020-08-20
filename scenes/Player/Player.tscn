@@ -114,7 +114,7 @@ one_shot = true
 [node name="DroneAnimatedSprite" type="AnimatedSprite" parent="."]
 rotation = 0.785398
 frames = SubResource( 5 )
-frame = 3
+frame = 1
 playing = true
 __meta__ = {
 "_edit_lock_": true

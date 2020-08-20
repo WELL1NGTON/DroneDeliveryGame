@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main_menu/fonts/RussoOne_48.tres" type="DynamicFont" id=1]
+
+[node name="BackButton" type="Button"]
+margin_left = 193.0
+margin_right = 357.0
+margin_bottom = 65.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.0745098, 0.486275, 0.886275, 1 )
+text = "Voltar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
