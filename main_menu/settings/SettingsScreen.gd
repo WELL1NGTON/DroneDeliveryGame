@@ -20,3 +20,11 @@ func _on_BackButton_pressed():
 	$SaveLoad.save(data)
 	get_tree().change_scene("res://main_menu/MainMenu.tscn") # Replace with function body.
 	
+
+
+func _on_SoundEffectSlider_value_changed(value):
+	data["sound_effects"] = value # Replace with function body.
+
+
+func _on_MainMusicSlider_value_changed(value):
+	data["music_volume"] = value # Replace with function body.

@@ -39,7 +39,6 @@ texture = ExtResource( 5 )
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-autoplay = true
 bus = "Music"
 
 [node name="BirdsBoidSpawner" type="Node2D" parent="."]

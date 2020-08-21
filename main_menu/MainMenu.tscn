@@ -24,8 +24,9 @@ __meta__ = {
 
 [node name="AdMob" type="Node" parent="."]
 script = ExtResource( 4 )
+is_real = true
 banner_on_top = false
-banner_id = "ca-app-pub-3940256099942544/6300978111"
+banner_id = "ca-app-pub-8803658616086629/2534924225"
 
 [node name="Menu" type="VBoxContainer" parent="."]
 margin_left = 80.0
